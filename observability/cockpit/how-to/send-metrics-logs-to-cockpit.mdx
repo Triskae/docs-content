@@ -32,7 +32,7 @@ You can push logs with any Loki compatible agent such as the [Promtail](https://
 ## Send metrics and logs to your Cockpit
 
 1. Click **Cockpit** in the Observability section of the [console](https://console.scaleway.com/) side menu. The **Cockpit** overview page displays.
-2. [Create a token](/observability/cockpit/how-to/create-token/) with the **Push** permission for metrics and logs.
+2. [Create a token](/observability/cockpit/how-to/create-token/) with the **Push** AND **Metrics** permission for metrics and logs.
     <Message type="important">
      - Make sure that you create your token in the same region as the [data sources](/observability/cockpit/concepts/#data-sources) you want to use it for.
      - Make sure that you copy your token's secret key and save it before you exit the page.
@@ -66,7 +66,7 @@ You can push logs with any Loki compatible agent such as the [Promtail](https://
       handler = logging_loki.LokiHandler(
           url="https://logs.cockpit.fr-par.scw.cloud/loki/api/v1/push",
           tags={"job": "logs_from_python"},
-          auth=("$SCW_SECRET_KEY", "$COCKPIT_TOKEN_SECRET_KEY"),
+          auth=("api_key", "$COCKPIT_TOKEN_SECRET_KEY"),
           version="1",
 
       )
